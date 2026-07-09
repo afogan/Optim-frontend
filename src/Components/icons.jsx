@@ -54,3 +54,44 @@ export const CollabIcon = () => (
     <path d="M16 14.5c2.7.3 5 2.3 5 5.5" />
   </svg>
 );
+
+export const ShieldIcon = ({ size = 18 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+  >
+    <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" />
+    <path d="M9 12l2 2 4-4" />
+  </svg>
+);
+
+export const QuoteIcon = ({ size = 22 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+  >
+    <path d="M7 7c-2 0-3.5 1.5-3.5 4S5 15 7 15c0-4 1-6 3-7V6c-1 0-2 .3-3 1z" />
+    <path d="M16 7c-2 0-3.5 1.5-3.5 4s1.5 4 3.5 4c0-4 1-6 3-7V6c-1 0-2 .3-3 1z" />
+  </svg>
+);
+
+export const ChevronDownIcon = ({ size = 14 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+  >
+    <path d="M6 9l6 6 6-6" />
+  </svg>
+);

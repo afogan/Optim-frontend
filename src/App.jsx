@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Sidebar from "./Components/sidebar.jsx";
 import NewBoardModal from "./Components/NewBoardModal.jsx";
+import LandingPage from "./tabs/LandingPage.jsx";
 import Home from "./tabs/home.jsx";
 import Kanban from "./tabs/Kanban.jsx";
 import Timeline from "./tabs/Timeline.jsx";
@@ -44,6 +45,7 @@ const VIEWS = {
 };
 
 export default function App() {
+  const [screen, setScreen] = useState("landing");
   const [view, setView] = useState("home");
   const [boards, setBoards] = useState(INITIAL_BOARDS);
   const [modalOpen, setModalOpen] = useState(false);
@@ -65,6 +67,10 @@ export default function App() {
   };
 
   const handleSelectBoard = () => setView("kanban");
+
+  if (screen === "landing") {
+    return <LandingPage onLogin={() => setScreen("dashboard")} />;
+  }
 
   const ActiveView = VIEWS[view];
 
