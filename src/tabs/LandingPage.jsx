@@ -9,7 +9,6 @@ import {
 } from "../Components/icons.jsx";
 
 import Logo from "../Components/Logo.jsx";
-import { useAuth } from "../auth/AuthContext.jsx";
 
 const NAV_LINKS = ["Product", "Solutions", "Resources"];
 
@@ -136,8 +135,7 @@ const FOOTER_COLUMNS = [
   },
 ];
 
-export default function LandingPage() {
-  const { login } = useAuth();
+export default function LandingPage({ onGetStarted }) {
   const [activeTab, setActiveTab] = useState(SHOWCASE_TABS[0].key);
   const activeShowcase = SHOWCASE_TABS.find((tab) => tab.key === activeTab);
 
@@ -154,10 +152,10 @@ export default function LandingPage() {
             ))}
           </div>
           <div className="landing-nav-actions">
-            <button className="btn-ghost pill" onClick={login}>
+            <button className="btn-ghost pill" onClick={onGetStarted}>
               Log in
             </button>
-            <button className="btn-primary pill" onClick={login}>
+            <button className="btn-primary pill" onClick={onGetStarted}>
               Get started
             </button>
           </div>
@@ -170,10 +168,10 @@ export default function LandingPage() {
             view, so nothing gets lost between chats.
           </p>
           <div className="landing-hero-actions">
-            <button className="btn-primary pill" onClick={login}>
+            <button className="btn-primary pill" onClick={onGetStarted}>
               Get started
             </button>
-            <button className="btn-ghost pill" onClick={login}>
+            <button className="btn-ghost pill" onClick={onGetStarted}>
               See how it works
             </button>
           </div>
@@ -231,14 +229,7 @@ export default function LandingPage() {
 
         <section className="landing-cta">
           <h2>Bring your team into Optim</h2>
-          <button
-            className="btn-primary pill"
-            onClick={() => {
-              console.log("clicked, login is", typeof login);
-              const result = login();
-              console.log("login() returned", result);
-            }}
-          >
+          <button className="btn-primary pill" onClick={onGetStarted}>
             Get started
           </button>
         </section>

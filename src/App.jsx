@@ -7,6 +7,7 @@ import Kanban from "./tabs/Kanban.jsx";
 import Timeline from "./tabs/Timeline.jsx";
 import Collaborators from "./tabs/Collaborators.jsx";
 import { useAuth } from "./auth/AuthContext.jsx";
+import LoginPage from "./tabs/LoginPage.jsx";
 
 const INITIAL_BOARDS = [
   {
@@ -50,9 +51,14 @@ export default function App() {
   const [boards, setBoards] = useState(INITIAL_BOARDS);
   const [modalOpen, setModalOpen] = useState(false);
   const { user } = useAuth();
+  const [screen, setScreen] = useState("landing");
 
   if (!user) {
-    return <LandingPage />;
+    return screen === "login" ? (
+      <LoginPage onBack={() => setScreen("landing")} />
+    ) : (
+      <LandingPage onGetStarted={() => setScreen("login")} />
+    );
   }
 
   const handleCreateBoard = (name) => {
