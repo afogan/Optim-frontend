@@ -1,21 +1,19 @@
-import { NavLink } from "react-router";
-
-import { useAuth } from "../auth/AuthContext";
+import { Link } from "react-router";
+import WorkspaceSwitcher from "./WorkspaceSwitcher.jsx";
+import styles from "./Navbar.module.css";
 
 export default function Navbar() {
-  const { token, logout } = useAuth();
   return (
-    <header id="navbar">
-      <NavLink id="brand" to="/">
-        <p>Frontend Template</p>
-      </NavLink>
-      <nav>
-        {token ? (
-          <button onClick={logout}>Log out</button>
-        ) : (
-          <NavLink to="/login">Log in</NavLink>
-        )}
-      </nav>
-    </header>
+    <nav className={styles.navbar}>
+      <div className={styles.left}>
+        <Link to="/workspaces" className={styles.logo}>
+          Optim
+        </Link>
+        <WorkspaceSwitcher />
+      </div>
+      <Link to="/profile" className={styles.profileLink}>
+        Profile
+      </Link>
+    </nav>
   );
 }
